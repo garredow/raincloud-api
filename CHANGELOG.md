@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/garredow/raincloud-api/compare/v1.1.0...v1.1.1) (2022-04-13)
+
+
+### Bug Fixes
+
+* rename to raincloud-api ([8aabe5c](https://github.com/garredow/raincloud-api/commit/8aabe5c9a9ec5c9e63fe10bca09794b4869a8f9c))
+
 # [1.1.0](https://github.com/garredow/raincloud-api/compare/v1.0.0...v1.1.0) (2022-04-13)
 
 ### Features
