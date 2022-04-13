@@ -17,6 +17,7 @@ export type Config = {
   meta: {
     appName: string;
     serverPort: number;
+    allowCors: boolean;
   };
   logger: {
     enabled: boolean;
@@ -35,6 +36,7 @@ function createConfig() {
     meta: {
       appName: process.env.APP_NAME!,
       serverPort: Number(process.env.SERVER_PORT),
+      allowCors: parseBool(process.env.ALLOW_CORS, false),
     },
     logger: {
       enabled: parseBool(process.env.LOGGER_ENABLED, true),
@@ -52,6 +54,7 @@ function createConfig() {
     meta: {
       appName: Joi.string().required(),
       serverPort: Joi.number().required(),
+      allowCors: Joi.bool().required(),
     },
     logger: {
       enabled: Joi.bool().required(),

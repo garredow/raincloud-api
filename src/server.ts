@@ -18,7 +18,9 @@ export function configureServer() {
     logger,
   });
 
-  // fastify.register(require('fastify-cors'));
+  if (config.meta.allowCors) {
+    fastify.register(require('fastify-cors'));
+  }
 
   fastify.register(function (instance, _options, done) {
     instance.post('/getTokens', {
