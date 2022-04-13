@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/garredow/raincloud-api/compare/v1.1.1...v1.2.0) (2022-04-13)
+
+
+### Features
+
+* add config for cors ([4d31e66](https://github.com/garredow/raincloud-api/commit/4d31e662cb7f858bddbb06bf72e26895e0b0b75c))
+
 ## [1.1.1](https://github.com/garredow/raincloud-api/compare/v1.1.0...v1.1.1) (2022-04-13)
 
 
