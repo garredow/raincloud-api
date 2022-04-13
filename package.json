@@ -1,5 +1,5 @@
 {
-  "name": "vulpine-fm-api",
+  "name": "raincloud-api",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/garredow/vulpine-fm-api.git"
+    "url": "https://github.com/garredow/raincloud-api.git"
   },
   "keywords": [],
   "author": "Garrett Downs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/garredow/vulpine-fm-api/issues"
+    "url": "https://github.com/garredow/raincloud-api/issues"
   },
-  "homepage": "https://github.com/garredow/vulpine-fm-api#readme",
+  "homepage": "https://github.com/garredow/raincloud-api#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
     "fastify": "^3.28.0",

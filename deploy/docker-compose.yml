@@ -5,7 +5,7 @@ networks:
     external: true
 
 services:
-  vulpine-fm-api:
+  raincloud-api:
     image: $DOCKER_IMAGE
     environment:
       APP_NAME: $APP_NAME
@@ -16,10 +16,10 @@ services:
       SC_CLIENT_SECRET: $SC_CLIENT_SECRET
       SC_REDIRECT_URI: $SC_REDIRECT_URI
     labels:
-      - traefik.http.routers.vulpine-fm-api.rule=Host(`${TRAEFIK_HOST}`)
-      - traefik.http.routers.vulpine-fm-api.tls=true
-      - traefik.http.routers.vulpine-fm-api.tls.certresolver=lets-encrypt
+      - traefik.http.routers.raincloud-api.rule=Host(`${TRAEFIK_HOST}`)
+      - traefik.http.routers.raincloud-api.tls=true
+      - traefik.http.routers.raincloud-api.tls.certresolver=lets-encrypt
       - traefik.port=80
-      - traefik.http.services.vulpine-fm-api.loadbalancer.server.port=${SERVER_PORT}
+      - traefik.http.services.raincloud-api.loadbalancer.server.port=${SERVER_PORT}
     networks:
       - web

@@ -7,7 +7,7 @@ if [[ -z "${DOCKER_IMAGE}" ]]; then
     exit 1
 fi
 
-cd ~/apps/vulpine-fm-api
+cd ~/apps/raincloud-api
 
 docker compose down && docker compose up -d
 
