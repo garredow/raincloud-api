@@ -5,7 +5,7 @@ import { config } from './lib/config';
 
 const logger: LoggerOptions = {
   enabled: config.logger.enabled,
-  name: 'kaiware-sync-api',
+  name: 'vulpine-fm-api',
   level: config.logger.level,
   formatters: {
     level: (label: string) => ({ level: label }),
@@ -21,6 +21,14 @@ export function configureServer() {
   // fastify.register(require('fastify-cors'));
 
   fastify.register(function (instance, _options, done) {
+    instance.post('/getTokens', {
+      handler: controller.getTokens,
+    });
+
+    instance.post('/refreshTokens', {
+      handler: controller.refreshToken,
+    });
+
     instance.get('/health', {
       handler: controller.health,
     });

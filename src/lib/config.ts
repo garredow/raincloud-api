@@ -23,6 +23,11 @@ export type Config = {
     level: `${LogLevel}`;
     file?: string;
   };
+  soundcloud: {
+    clientId: string;
+    clientSecret: string;
+    redirectUri: string;
+  };
 };
 
 function createConfig() {
@@ -35,6 +40,11 @@ function createConfig() {
       enabled: parseBool(process.env.LOGGER_ENABLED, true),
       level: process.env.LOGGER_LEVEL! as any,
       file: process.env.LOGGER_FILE || undefined,
+    },
+    soundcloud: {
+      clientId: process.env.SC_CLIENT_ID!,
+      clientSecret: process.env.SC_CLIENT_SECRET!,
+      redirectUri: process.env.SC_REDIRECT_URI!,
     },
   };
 
@@ -49,6 +59,11 @@ function createConfig() {
         .valid('trace', 'debug', 'info', 'warn', 'error', 'fatal', 'silent')
         .required(),
       file: Joi.string().optional(),
+    },
+    soundcloud: {
+      clientId: Joi.string().required(),
+      clientSecret: Joi.string().required(),
+      redirectUri: Joi.string().required(),
     },
   });
   const { error } = schema.validate(config, { abortEarly: false });

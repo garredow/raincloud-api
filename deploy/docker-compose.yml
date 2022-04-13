@@ -12,6 +12,9 @@ services:
       SERVER_PORT: $SERVER_PORT
       LOGGER_ENABLED: $LOGGER_ENABLED
       LOGGER_LEVEL: $LOGGER_LEVEL
+      SC_CLIENT_ID: $SC_CLIENT_ID
+      SC_CLIENT_SECRET: $SC_CLIENT_SECRET
+      SC_REDIRECT_URI: $SC_REDIRECT_URI
     labels:
       - traefik.http.routers.vulpine-fm-api.rule=Host(`${TRAEFIK_HOST}`)
       - traefik.http.routers.vulpine-fm-api.tls=true
