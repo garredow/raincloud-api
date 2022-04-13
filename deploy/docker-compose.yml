@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  vulpine-fm-api:
+    image: $DOCKER_IMAGE
+    environment:
+      APP_NAME: $APP_NAME
+      SERVER_PORT: $SERVER_PORT
+      LOGGER_ENABLED: $LOGGER_ENABLED
+      LOGGER_LEVEL: $LOGGER_LEVEL
+    labels:
+      - traefik.http.routers.vulpine-fm-api.rule=Host(`${TRAEFIK_HOST}`)
+      - traefik.http.routers.vulpine-fm-api.tls=true
+      - traefik.http.routers.vulpine-fm-api.tls.certresolver=lets-encrypt
+      - traefik.port=80
+      - traefik.http.services.vulpine-fm-api.loadbalancer.server.port=${SERVER_PORT}
+    networks:
+      - web
