@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/garredow/raincloud-api/compare/v1.2.0...v1.3.0) (2022-04-14)
+
+
+### Features
+
+* handle both client tokens ([c9ad9a9](https://github.com/garredow/raincloud-api/commit/c9ad9a9fd2de6c32b20d99cedf6e692a9dcaf416))
+
 # [1.2.0](https://github.com/garredow/raincloud-api/compare/v1.1.1...v1.2.0) (2022-04-13)
 
 
