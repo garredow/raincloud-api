@@ -4,11 +4,12 @@ import { SoundCloud } from './lib/soundcloud';
 const { version: apiVersion } = require('../package.json');
 
 type GetTokensBody = {
+  clientId: string;
   code: string;
 };
 async function getTokens(req: FastifyRequest<{ Body: GetTokensBody }>, res: FastifyReply) {
   try {
-    const result = await new SoundCloud().getTokens(req.body.code);
+    const result = await new SoundCloud().getTokens(req.body.clientId, req.body.code);
 
     res.send({
       access_token: result.access_token,
@@ -21,11 +22,12 @@ async function getTokens(req: FastifyRequest<{ Body: GetTokensBody }>, res: Fast
 }
 
 type RefreshTokenBody = {
+  clientId: string;
   refreshToken: string;
 };
 async function refreshToken(req: FastifyRequest<{ Body: RefreshTokenBody }>, res: FastifyReply) {
   try {
-    const result = await new SoundCloud().refreshToken(req.body.refreshToken);
+    const result = await new SoundCloud().refreshToken(req.body.clientId, req.body.refreshToken);
 
     res.send({
       access_token: result.access_token,

@@ -25,9 +25,12 @@ export type Config = {
     file?: string;
   };
   soundcloud: {
-    clientId: string;
-    clientSecret: string;
-    redirectUri: string;
+    clientIdDev: string;
+    clientSecretDev: string;
+    redirectUriDev: string;
+    clientIdProd: string;
+    clientSecretProd: string;
+    redirectUriProd: string;
   };
 };
 
@@ -44,9 +47,12 @@ function createConfig() {
       file: process.env.LOGGER_FILE || undefined,
     },
     soundcloud: {
-      clientId: process.env.SC_CLIENT_ID!,
-      clientSecret: process.env.SC_CLIENT_SECRET!,
-      redirectUri: process.env.SC_REDIRECT_URI!,
+      clientIdDev: process.env.SC_CLIENT_ID_DEV!,
+      clientSecretDev: process.env.SC_CLIENT_SECRET_DEV!,
+      redirectUriDev: process.env.SC_REDIRECT_URI_DEV!,
+      clientIdProd: process.env.SC_CLIENT_ID_PROD!,
+      clientSecretProd: process.env.SC_CLIENT_SECRET_PROD!,
+      redirectUriProd: process.env.SC_REDIRECT_URI_PROD!,
     },
   };
 
@@ -64,9 +70,12 @@ function createConfig() {
       file: Joi.string().optional(),
     },
     soundcloud: {
-      clientId: Joi.string().required(),
-      clientSecret: Joi.string().required(),
-      redirectUri: Joi.string().required(),
+      clientIdDev: Joi.string().required(),
+      clientSecretDev: Joi.string().required(),
+      redirectUriDev: Joi.string().required(),
+      clientIdProd: Joi.string().required(),
+      clientSecretProd: Joi.string().required(),
+      redirectUriProd: Joi.string().required(),
     },
   });
   const { error } = schema.validate(config, { abortEarly: false });

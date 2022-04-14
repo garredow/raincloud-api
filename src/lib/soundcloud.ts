@@ -1,14 +1,15 @@
 import fetch from 'node-fetch';
-import { Tokens } from '../models';
+import { SoundCloudConfig, Tokens } from '../models';
 import { config } from './config';
 
 export class SoundCloud {
-  async getTokens(code: string): Promise<Tokens> {
+  async getTokens(clientId: string, code: string): Promise<Tokens> {
+    const config = this.getConfig(clientId);
     var body = new URLSearchParams();
     body.append('grant_type', 'authorization_code');
-    body.append('client_id', config.soundcloud.clientId);
-    body.append('client_secret', config.soundcloud.clientSecret);
-    body.append('redirect_uri', config.soundcloud.redirectUri);
+    body.append('client_id', config.clientId);
+    body.append('client_secret', config.clientSecret);
+    body.append('redirect_uri', config.redirectUri);
     body.append('code', code);
 
     return fetch('https://api.soundcloud.com/oauth2/token', {
@@ -27,11 +28,12 @@ export class SoundCloud {
     });
   }
 
-  async refreshToken(refreshToken: string): Promise<Tokens> {
+  async refreshToken(clientId: string, refreshToken: string): Promise<Tokens> {
+    const config = this.getConfig(clientId);
     var body = new URLSearchParams();
     body.append('grant_type', 'refresh_token');
-    body.append('client_id', config.soundcloud.clientId);
-    body.append('client_secret', config.soundcloud.clientSecret);
+    body.append('client_id', config.clientId);
+    body.append('client_secret', config.clientSecret);
     body.append('refresh_token', refreshToken);
 
     return fetch('https://api.soundcloud.com/oauth2/token', {
@@ -48,5 +50,24 @@ export class SoundCloud {
 
       return res.json() as Promise<Tokens>;
     });
+  }
+
+  private getConfig(clientId: string): SoundCloudConfig {
+    if (clientId === config.soundcloud.clientIdDev) {
+      return {
+        clientId,
+        clientSecret: config.soundcloud.clientSecretDev,
+        redirectUri: config.soundcloud.redirectUriDev,
+      };
+    }
+    if (clientId === config.soundcloud.clientIdProd) {
+      return {
+        clientId,
+        clientSecret: config.soundcloud.clientSecretProd,
+        redirectUri: config.soundcloud.redirectUriProd,
+      };
+    }
+
+    throw new Error(`${clientId} is not a known client ID!`);
   }
 }
